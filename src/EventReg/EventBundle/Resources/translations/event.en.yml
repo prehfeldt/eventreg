@@ -1,2 +1,49 @@
+global:
+  login: Login
+  logout: Logout
+  register: Register
+  profileLink: Logged in as %name%
+  dateFormat: Y-m-d - H:i:s
+  dialog:
+    headline: Warning!
+    buttonYes: Yes
+    buttonNo: No
 homepage:
   pagetitle: Event Registration
+event:
+  list:
+    linkName: Show all events
+    headline: Events
+    eventCount: There are %events% events listed
+    ownerProfile: Added by %name%
+    attend: Attend
+    attendees: Attendees
+    details: Details
+    attendeeCount: %attendees% attendees
+  add:
+    linkName: Add event
+    headline: Add new event
+    name: Name
+    dateTime: Date and Time
+    description: Description
+    submit: Add new event
+    markdownHint: The description supports markdown
+    preview: Preview
+    back: Edit
+  details:
+    dateTime: Date and Time: %date%
+    ownerProfile: Added by %name%
+    attendees: Attendees
+    attend: Attend
+    attendeeCount: There are %attendeeCount% attendees
+    cancelAttendance: cancel
+    removeAttendee: Remove attendee
+    edit: Edit
+    remove: Delete
+  edit:
+    headline: Edit Event
+    submit: Save
+    markdownHint: The description supports markdown
+    preview: Preview
+    back: Edit
+    abort: Cancel

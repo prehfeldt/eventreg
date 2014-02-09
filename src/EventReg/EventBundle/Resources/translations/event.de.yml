@@ -27,7 +27,7 @@ event:
     dateTime: Datum und Uhrzeit
     description: Beschreibung
     submit: Neues Event anlegen
-    markdownHint: Die Beschreibung unterstützt Makrdown
+    markdownHint: Die Beschreibung unterstützt Markdown
     preview: Vorschau
     back: Bearbeiten
   details:
@@ -43,7 +43,7 @@ event:
   edit:
     headline: Event bearbeiten
     submit: Speichern
-    markdownHint: Die Beschreibung unterstützt Makrdown
+    markdownHint: Die Beschreibung unterstützt Markdown
     preview: Vorschau
     back: Bearbeiten
     abort: Abbrechen

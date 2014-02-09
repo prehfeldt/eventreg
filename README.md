@@ -1,15 +1,16 @@
 eventreg
 ========
 
-Project Setup steps
--------------------
+Project Setup
+-------------
+* adapt the `parameters.yml` file
 * `cd PROJECT_ROOT`
 * `vagrant up`
-* On the virtual machine
+* On the virtual machine run
     * `cp app/config/parameters.yml.dist app/config/parameters.yml`
-    * adapt the `parameters.yml` file
     * `curl -sS https://getcomposer.org/installer | php`
     * `composer update`
     * `php app/console doctrine:schema:create`
+* point your browser to `http://events.dev/`
 
 Done.
