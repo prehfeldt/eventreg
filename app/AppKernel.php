@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new EventReg\EventBundle\EventBundle(),
             new EventReg\UserBundle\UserBundle(),
+            new EventReg\BaseBundle\BaseBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

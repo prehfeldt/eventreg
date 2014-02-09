@@ -1,0 +1,12 @@
+global:
+  login: Login
+  logout: Logout
+  register: Register
+  profileLink: Logged in as %name%
+  dateFormat: Y-m-d - H:i:s
+  dialog:
+    headline: Warning!
+    buttonYes: Yes
+    buttonNo: No
+homepage:
+  pagetitle: Event Registration

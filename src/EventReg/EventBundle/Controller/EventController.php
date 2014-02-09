@@ -11,27 +11,37 @@ use dflydev\markdown\MarkdownExtraParser;
 
 class EventController extends Controller
 {
-    public function indexAction() {
+    public function indexAction()
+    {
+
         $em = $this->getDoctrine()->getManager();
 
         $events = $em->getRepository('EventBundle:Event')->findAllOrderedByDate();
 
-        return $this->render('EventBundle:Default:index.html.twig', array(
-            'events' => $events
-        ));
+        return $this->render(
+            'EventBundle:Default:index.html.twig',
+            array(
+                'events' => $events
+            )
+        );
     }
 
-    public function detailAction($id) {
+    public function detailAction($id)
+    {
         $em = $this->getDoctrine()->getManager();
 
         $event = $em->getRepository('EventBundle:Event')->findOneById($id);
 
-        return $this->render('EventBundle:Default:details.html.twig', array(
-            'event'     => $event
-        ));
+        return $this->render(
+            'EventBundle:Default:details.html.twig',
+            array(
+                'event' => $event
+            )
+        );
     }
 
-    public function addAction() {
+    public function addAction()
+    {
         $eventForm = $this->get('event.form');
         $request = $this->getRequest();
         $em = $this->getDoctrine()->getManager();
@@ -53,12 +63,16 @@ class EventController extends Controller
             }
         }
 
-        return $this->render('EventBundle:Default:add.html.twig', array(
-            'form' => $form->createView()
-        ));
+        return $this->render(
+            'EventBundle:Default:add.html.twig',
+            array(
+                'form' => $form->createView()
+            )
+        );
     }
 
-    public function attendAction($id) {
+    public function attendAction($id)
+    {
         $token = $this->get('security.context')->getToken();
         $em = $this->getDoctrine()->getManager();
 
@@ -73,7 +87,8 @@ class EventController extends Controller
         return $this->redirect($this->generateUrl('_event_details', array('id' => $event->getId())));
     }
 
-    public function cancelAttendanceAction($id) {
+    public function cancelAttendanceAction($id)
+    {
         $token = $this->get('security.context')->getToken();
         $em = $this->getDoctrine()->getManager();
 
@@ -88,7 +103,8 @@ class EventController extends Controller
         return $this->redirect($this->generateUrl('_event_details', array('id' => $event->getId())));
     }
 
-    public function removeAttendeeAction($eventId, $userId) {
+    public function removeAttendeeAction($eventId, $userId)
+    {
         $em = $this->getDoctrine()->getManager();
 
         $event = $em->getRepository('EventBundle:Event')->findOneById($eventId);
@@ -102,7 +118,8 @@ class EventController extends Controller
         return $this->redirect($this->generateUrl('_event_details', array('id' => $event->getId())));
     }
 
-    public function removeAction($id) {
+    public function removeAction($id)
+    {
         $securityContext = $this->get('security.context');
         $em = $this->getDoctrine()->getManager();
 
@@ -119,7 +136,8 @@ class EventController extends Controller
         return $this->redirect($this->generateUrl('_event_homepage'));
     }
 
-    public function editAction($id) {
+    public function editAction($id)
+    {
         $eventForm = $this->get('event.form');
         $securityContext = $this->get('security.context');
         $em = $this->getDoctrine()->getManager();
@@ -141,13 +159,17 @@ class EventController extends Controller
             }
         }
 
-        return $this->render('EventBundle:Default:edit.html.twig', array(
-            'event' => $event,
-            'form'  => $form->createView()
-        ));
+        return $this->render(
+            'EventBundle:Default:edit.html.twig',
+            array(
+                'event' => $event,
+                'form' => $form->createView()
+            )
+        );
     }
 
-    public function markdownPreviewAction() {
+    public function markdownPreviewAction()
+    {
         $request = $this->getRequest();
         $description = $request->request->get('description', '');
 
