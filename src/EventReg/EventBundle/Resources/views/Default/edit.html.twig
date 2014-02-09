@@ -18,11 +18,11 @@
         </a>
 
         <p>
-            <input type="submit" class="button big" value="{% trans %}event.edit.submit{% endtrans %}" />
-            <a href="{{ path("_event_details", {"id": event.getId()}) }}" class="button big">{% trans %}event.edit.abort{% endtrans %}</a>
+            <input type="submit" class="btn btn-default" value="{% trans %}event.edit.submit{% endtrans %}" />
+            <a href="{{ path("_event_details", {"id": event.getId()}) }}" class="btn btn-default">{% trans %}event.edit.abort{% endtrans %}</a>
 
-            <a href="#" class="button big" id="preview_link">{% trans %}event.edit.preview{% endtrans %}</a>
-            <a href="#" class="button big" id="preview_back">{% trans %}event.edit.back{% endtrans %}</a>
+            <a href="#" class="btn btn-default" id="preview_link">{% trans %}event.edit.preview{% endtrans %}</a>
+            <a href="#" class="btn btn-default" id="preview_back">{% trans %}event.edit.back{% endtrans %}</a>
         </p>
     </form>
 {% endblock %}
