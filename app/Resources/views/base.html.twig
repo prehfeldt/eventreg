@@ -1,0 +1,50 @@
+{%- trans_default_domain "event" -%}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}{% trans %}homepage.pagetitle{% endtrans %}{% endblock %}</title>
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+        <link href="{{ asset('bundles/event/css/site.css') }}" type="text/css" rel="stylesheet" />
+        <link href="{{ asset('bundles/event/css/gh-buttons.css') }}" type="text/css" rel="stylesheet" />
+
+        <link href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" type="text/css" rel="stylesheet" />
+        <script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+
+        <!--<link href="{{ asset('bundles/event/lib/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
+        <script src="{{ asset('bundles/event/lib/bootstrap/js/bootstrap.min.js') }}"></script>-->
+
+        <script src="{{ asset('bundles/event/javascript/application.js') }}"></script>
+
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+        <div class="header">
+            <ul class="button-group">
+                <li><a href="{{ path("_event_homepage") }}" class="button primary pill icon calendar">{% trans %}event.list.linkName{% endtrans %}</a></li>
+                {% if is_granted('ROLE_USER') %}
+                    <li><a href="{{ path("_event_add") }}" class="button pill icon add">{% trans %}event.add.linkName{% endtrans %}</a></li>
+                    <li><a href="{{ path("fos_user_profile_show") }}" class="button pill icon user">{% trans with {'%name%': app.user.username} %}global.profileLink{% endtrans %}</a></li>
+                    <li><a href="{{ path("fos_user_security_logout") }}" class="button pill icon remove">{% trans %}global.logout{% endtrans %}</a></li>
+                {% else %}
+                    <li><a href="{{ path("fos_user_security_login") }}" class="button pill icon key">{% trans %}global.login{% endtrans %}</a></li>
+                    <li><a href="{{ path("fos_user_registration_register") }}" class="button pill icon user">{% trans %}global.register{% endtrans %}</a></li>
+                {% endif %}
+            </ul>
+        </div>
+
+        <div class="content">
+            {% block content %}{% endblock %}
+        </div>
+
+        <div class="footer">
+            {% spaceless %}
+                <a href="https://github.com/prehfeldt/eventreg">
+                    <img src="{{ asset('bundles/event/images/github_icon.png') }}" alt="Project on GitHub">
+                </a>
+            {% endspaceless %}
+        </div>
+    </body>
+</html>

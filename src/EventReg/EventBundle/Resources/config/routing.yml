@@ -1,0 +1,35 @@
+_event_homepage:
+    pattern:  /
+    defaults: { _controller: EventBundle:Event:index }
+
+_event_add:
+    pattern:  /event/add
+    defaults: { _controller: EventBundle:Event:add }
+
+_event_edit:
+    pattern:  /event/edit/{id}
+    defaults: { _controller: EventBundle:Event:edit }
+
+_event_remove:
+    pattern:  /event/remove/{id}
+    defaults: { _controller: EventBundle:Event:remove }
+
+_event_details:
+    pattern:  /event/{id}
+    defaults: { _controller: EventBundle:Event:detail }
+
+_event_attend:
+    pattern:  /event/{id}/attend
+    defaults: { _controller: EventBundle:Event:attend }
+
+_event_cancel_attendance:
+    pattern:  /event/{id}/cancel_attendance
+    defaults: { _controller: EventBundle:Event:cancelAttendance }
+
+_event_remove_attendee:
+    pattern:  /event/{eventId}/remove_attendee/{userId}
+    defaults: { _controller: EventBundle:Event:removeAttendee }
+
+_event_description_preview:
+    pattern:  /markdown/preview.json
+    defaults: { _controller: EventBundle:Event:markdownPreview }

@@ -1,0 +1,16 @@
+parameters:
+#    event.example.class: EventReg\EventBundle\Example
+
+services:
+#    event.example:
+#        class: %event.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+
+    event.form:
+      class: EventReg\EventBundle\EventForm
+      arguments: [@form.factory, @translator]
+
+    event.twig.event_extension:
+        class: EventReg\EventBundle\Twig\EventExtension
+        tags:
+            - { name: twig.extension }

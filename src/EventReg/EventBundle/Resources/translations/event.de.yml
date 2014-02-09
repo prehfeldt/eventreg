@@ -1,0 +1,49 @@
+global:
+  login: Anmelden
+  logout: Abmelden
+  register: Registrieren
+  profileLink: Angemeldet als %name%
+  dateFormat: d.m.Y - H:i:s
+  dialog:
+    headline: Achtung!
+    buttonYes: Ja
+    buttonNo: Nein
+homepage:
+  pagetitle: Event Registrierung
+event:
+  list:
+    linkName: Alle Events anzeigen
+    headline: Events
+    eventCount: Zur Zeit sind %events% Events gelistet
+    ownerProfile: Angelegt von %name%
+    attend: Teilnehmen
+    attendees: Teilnehmerliste
+    details: Details
+    attendeeCount: %attendees% Teilnehmer
+  add:
+    linkName: Event anlegen
+    headline: Neues Event anlegen
+    name: Name
+    dateTime: Datum und Uhrzeit
+    description: Beschreibung
+    submit: Neues Event anlegen
+    markdownHint: Die Beschreibung unterstützt Makrdown
+    preview: Vorschau
+    back: Bearbeiten
+  details:
+    dateTime: Datum und Uhrzeit: %date%
+    ownerProfile: Angelegt von %name%
+    attendees: Teilnehmerliste
+    attend: Auch Teilnehmen
+    attendeeCount: Bisher haben sich %attendeeCount% Teilnehmer angeldet
+    cancelAttendance: Absagen
+    removeAttendee: Teilnehmer entfernen
+    edit: Bearbeiten
+    remove: Löschen
+  edit:
+    headline: Event bearbeiten
+    submit: Speichern
+    markdownHint: Die Beschreibung unterstützt Makrdown
+    preview: Vorschau
+    back: Bearbeiten
+    abort: Abbrechen

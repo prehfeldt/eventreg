@@ -1,0 +1,59 @@
+{% extends '::base.html.twig' %}
+{% trans_default_domain "event" %}
+
+{% set dateFormat %}
+    {% trans %}global.dateFormat{% endtrans %}
+{% endset %}
+
+{% set dateTime %}
+    {% trans with {'%date%':  event.getDateTime().format(dateFormat)} %}event.details.dateTime{% endtrans %}
+{% endset %}
+
+{% block title %}
+    {{ event.getName()|escape|title }}
+{% endblock %}
+
+{% block content %}
+    <div class="eventDetails">
+        <h1>
+            <img src="{{ asset('bundles/event/images/event_icon.png') }}" />
+            {{ event.getName()|escape|title }}
+        </h1>
+        {% trans with {'%name%': event.getOwner().getUsername()} %}event.details.ownerProfile{% endtrans %}<br />
+        {{ dateTime }}<br />
+
+        {{ event.getDescription()|escape|markdown }}
+
+        <a name="attendees" />
+        <h1>
+            <img src="{{ asset('bundles/event/images/group_icon.png') }}" />
+            {% trans %}event.details.attendees{% endtrans %}
+        </h1>
+
+        {% trans with {'%attendeeCount%': event.getAttendees()|length} %}event.details.attendeeCount{% endtrans %}
+
+        <ul>
+            {% for attendee in event.getAttendees() %}
+                <li>
+                    {{ attendee.getUsername() }}
+                    {% if app.user and attendee.getId() == app.user.id %}
+                        <a href="{{ path("_event_cancel_attendance", {"id": event.getId()}) }}" class="button danger icon remove">{% trans %}event.details.cancelAttendance{% endtrans %}</a>
+                    {% elseif is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path("_event_remove_attendee", {"eventId": event.getId(), "userId": attendee.getId() }) }}" class="button danger icon remove">{% trans %}event.details.removeAttendee{% endtrans %}</a>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+
+        <ul class="button-group">
+            {% if app.user  %}
+                <a href="{{ path("_event_attend", {"id": event.getId()}) }}" class="button pill icon add">{% trans %}event.details.attend{% endtrans %}</a>
+            {% endif %}
+
+            {% if (app.user and event.getOwner().getId() == app.user.id) or is_granted('ROLE_ADMIN') %}
+                <a href="{{ path("_event_edit", {"id": event.getId()}) }}" class="button pill icon edit">{% trans %}event.details.edit{% endtrans %}</a>
+                <a href="{{ path("_event_remove", {"id": event.getId()}) }}" class="button pill icon trash danger">{% trans %}event.details.remove{% endtrans %}</a>
+            {% endif %}
+        </ul>
+    </div>
+{% endblock %}

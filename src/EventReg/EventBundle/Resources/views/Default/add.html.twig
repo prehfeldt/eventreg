@@ -1,0 +1,26 @@
+{% extends '::base.html.twig' %}
+{% trans_default_domain 'event' %}
+
+{% block content %}
+    <h1>{% trans %}event.add.headline{% endtrans %}</h1>
+
+    <form action="{{ path('_event_add') }}" method="post" {{ form_enctype(form) }} class="eventform">
+        {{ form_widget(form) }}
+
+        <div id="form_description_preview">
+            <div class="spinner">
+                <img src="{{ asset('bundles/event/images/spinner.gif') }}" alt="spinner" />
+            </div>
+        </div>
+
+        <a href="http://daringfireball.net/projects/markdown/syntax" target="_blank">
+            {% trans %}event.add.markdownHint{% endtrans %}
+        </a>
+
+        <p>
+            <input type="submit" class="button big" value="{% trans %}event.add.submit{% endtrans %}" />
+            <a href="#" class="button big" id="preview_link">{% trans %}event.add.preview{% endtrans %}</a>
+            <a href="#" class="button big" id="preview_back">{% trans %}event.add.back{% endtrans %}</a>
+        </p>
+    </form>
+{% endblock %}

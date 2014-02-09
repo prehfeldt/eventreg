@@ -1,0 +1,44 @@
+{% extends '::base.html.twig' %}
+{% trans_default_domain "event" %}
+
+{% set dateFormat %}
+{% trans %}global.dateFormat{% endtrans %}
+{% endset %}
+
+{% block content %}
+    <h1>{% trans %}event.list.headline{% endtrans %}</h1>
+
+    {% trans with {'%events%': events|length} %}event.list.eventCount{% endtrans %}<br /><br />
+
+    {% for event in events %}
+        <div class="event">
+            <h2>
+                <img src="{{ asset('bundles/event/images/event_icon.png') }}" />
+                <a href="{{ path("_event_details", {"id": event.getId()}) }}">{{ event.getName()|escape|title }}</a>
+            </h2>
+            <div class="details">
+                {{ event.getDateTime().format(dateFormat) }} | {% trans with {'%name%': event.getOwner().getUsername()} %}event.list.ownerProfile{% endtrans %}
+            </div>
+            <div class="description">
+                {{ event.getDescription()|escape|markdown }}
+            </div>
+            <div class="more">
+                <ul class="button-group">
+                    <a href="{{ path("_event_details", {"id": event.getId()}) }}" class="button primary pill icon search">{% trans %}event.list.details{% endtrans %}</a>
+
+                    <a href="{{ path("_event_details", {"id": event.getId()}) }}#attendees" class="button pill icon user">{% trans with {'%attendees%': event.getAttendees()|length} %}event.list.attendeeCount{% endtrans %}</a>
+
+                    {% if is_granted('ROLE_USER')  %}
+                        <a href="{{ path("_event_attend", {"id": event.getId()}) }}" class="button pill icon add">{% trans %}event.list.attend{% endtrans %}</a>
+                    {% endif %}
+
+                    {% if (app.user and event.getOwner().getId() == app.user.id) or is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path("_event_edit", {"id": event.getId()}) }}" class="button pill icon edit">{% trans %}event.details.edit{% endtrans %}</a>
+                        <a href="{{ path("_event_remove", {"id": event.getId()}) }}" class="button pill icon trash danger">{% trans %}event.details.remove{% endtrans %}</a>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}
