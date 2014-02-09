@@ -106,3 +106,7 @@ form.eventform #form_name {
     text-align: center;
     margin: 0 auto;
 }
+
+.content {
+    padding-top: 3em;
+}

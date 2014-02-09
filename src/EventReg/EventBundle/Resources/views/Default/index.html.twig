@@ -23,7 +23,7 @@
                 {{ event.getDescription()|escape|markdown }}
             </div>
             <div class="more">
-                <ul class="btn-group btn-group-sm">
+                <div class="btn-group btn-group-sm">
                     <a href="{{ path("_event_details", {"id": event.getId()}) }}" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> {% trans %}event.list.details{% endtrans %}</a>
 
                     <a href="{{ path("_event_details", {"id": event.getId()}) }}#attendees" class="btn btn-default">{% trans with {'%attendees%': event.getAttendees()|length} %}event.list.attendeeCount{% endtrans %}</a>
@@ -36,7 +36,7 @@
                         <a href="{{ path("_event_edit", {"id": event.getId()}) }}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> {% trans %}event.details.edit{% endtrans %}</a>
                         <a href="{{ path("_event_remove", {"id": event.getId()}) }}" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> {% trans %}event.details.remove{% endtrans %}</a>
                     {% endif %}
-                </ul>
+                </div>
             </div>
         </div>
     {% endfor %}

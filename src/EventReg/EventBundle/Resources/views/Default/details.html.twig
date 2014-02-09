@@ -24,7 +24,7 @@
 
         {{ event.getDescription()|escape|markdown }}
 
-        <a name="attendees" />
+        <a name="attendees"></a>
         <h1>
             <img src="{{ asset('bundles/event/images/group_icon.png') }}" />
             {% trans %}event.details.attendees{% endtrans %}
@@ -45,15 +45,15 @@
             {% endfor %}
         </ul>
 
-        <ul class="button-group">
+        <div class="btn-group btn-group-sm">
             {% if app.user  %}
-                <a href="{{ path("_event_attend", {"id": event.getId()}) }}" class="button pill icon add">{% trans %}event.details.attend{% endtrans %}</a>
+                <a href="{{ path("_event_attend", {"id": event.getId()}) }}" class="btn btn-default"><span class="glyphicon glyphicon-user"></span> {% trans %}event.details.attend{% endtrans %}</a>
             {% endif %}
 
             {% if (app.user and event.getOwner().getId() == app.user.id) or is_granted('ROLE_ADMIN') %}
-                <a href="{{ path("_event_edit", {"id": event.getId()}) }}" class="button pill icon edit">{% trans %}event.details.edit{% endtrans %}</a>
-                <a href="{{ path("_event_remove", {"id": event.getId()}) }}" class="button pill icon trash danger">{% trans %}event.details.remove{% endtrans %}</a>
+                <a href="{{ path("_event_edit", {"id": event.getId()}) }}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> {% trans %}event.details.edit{% endtrans %}</a>
+                <a href="{{ path("_event_remove", {"id": event.getId()}) }}" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> {% trans %}event.details.remove{% endtrans %}</a>
             {% endif %}
-        </ul>
+        </div>
     </div>
 {% endblock %}
