@@ -14,7 +14,7 @@
 
         <script src="{{ asset('bundles/base/js/application.js') }}"></script>
 
-        {% block stylesheets %}{% endblock %}
+        {% block headAdditions %}{% endblock %}
     </head>
     <body>
         <div class="header">
@@ -38,7 +38,7 @@
         <div class="footer">
             {% spaceless %}
                 <a href="https://github.com/prehfeldt/eventreg">
-                    <img src="{{ asset('bundles/event/images/github_icon.png') }}" alt="Project on GitHub">
+                    <img src="{{ asset('bundles/base/images/github_icon.png') }}" alt="Project on GitHub">
                 </a>
             {% endspaceless %}
         </div>

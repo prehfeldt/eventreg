@@ -11,6 +11,7 @@ Project Setup
     * `curl -sS https://getcomposer.org/installer | php`
     * `composer update`
     * `php app/console doctrine:schema:create`
+    * `php app/console assets:install`
 * point your browser to `http://events.dev/`
 
 Done.
