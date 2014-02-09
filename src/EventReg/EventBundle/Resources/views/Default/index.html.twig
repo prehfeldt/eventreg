@@ -23,18 +23,18 @@
                 {{ event.getDescription()|escape|markdown }}
             </div>
             <div class="more">
-                <ul class="button-group">
-                    <a href="{{ path("_event_details", {"id": event.getId()}) }}" class="button primary pill icon search">{% trans %}event.list.details{% endtrans %}</a>
+                <ul class="btn-group btn-group-sm">
+                    <a href="{{ path("_event_details", {"id": event.getId()}) }}" class="btn btn-default"><span class="glyphicon glyphicon-info-sign"></span> {% trans %}event.list.details{% endtrans %}</a>
 
-                    <a href="{{ path("_event_details", {"id": event.getId()}) }}#attendees" class="button pill icon user">{% trans with {'%attendees%': event.getAttendees()|length} %}event.list.attendeeCount{% endtrans %}</a>
+                    <a href="{{ path("_event_details", {"id": event.getId()}) }}#attendees" class="btn btn-default">{% trans with {'%attendees%': event.getAttendees()|length} %}event.list.attendeeCount{% endtrans %}</a>
 
                     {% if is_granted('ROLE_USER')  %}
-                        <a href="{{ path("_event_attend", {"id": event.getId()}) }}" class="button pill icon add">{% trans %}event.list.attend{% endtrans %}</a>
+                        <a href="{{ path("_event_attend", {"id": event.getId()}) }}" class="btn btn-default"><span class="glyphicon glyphicon-user"></span> {% trans %}event.list.attend{% endtrans %}</a>
                     {% endif %}
 
                     {% if (app.user and event.getOwner().getId() == app.user.id) or is_granted('ROLE_ADMIN') %}
-                        <a href="{{ path("_event_edit", {"id": event.getId()}) }}" class="button pill icon edit">{% trans %}event.details.edit{% endtrans %}</a>
-                        <a href="{{ path("_event_remove", {"id": event.getId()}) }}" class="button pill icon trash danger">{% trans %}event.details.remove{% endtrans %}</a>
+                        <a href="{{ path("_event_edit", {"id": event.getId()}) }}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> {% trans %}event.details.edit{% endtrans %}</a>
+                        <a href="{{ path("_event_remove", {"id": event.getId()}) }}" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> {% trans %}event.details.remove{% endtrans %}</a>
                     {% endif %}
                 </ul>
             </div>
